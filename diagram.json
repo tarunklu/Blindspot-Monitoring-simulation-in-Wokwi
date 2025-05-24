@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": -137.65,
+      "left": 41.95,
+      "attrs": { "env": "micropython-20241129-v1.24.1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -22.8,
+      "left": -130.6,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -13.2,
+      "left": 243.8,
+      "attrs": { "color": "red" }
+    },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": 49.5, "left": -196.1, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic2", "top": 59.1, "left": 197.5, "attrs": {} },
+    {
+      "type": "wokwi-text",
+      "id": "text1",
+      "top": -48,
+      "left": -240,
+      "attrs": { "text": "Left Side Pillar BlindSpot Indicator" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text2",
+      "top": 28.8,
+      "left": -201.6,
+      "attrs": { "text": "Left Side Ultrasonic Sensor" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text3",
+      "top": 38.4,
+      "left": 182.4,
+      "attrs": { "text": "Right Side Ultrasonic Sensor" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text4",
+      "top": -48,
+      "left": 144,
+      "attrs": { "text": "Right Side Pillar BlindSpot Indicator" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 13.55,
+      "left": -96,
+      "attrs": { "value": "133" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 23.15,
+      "left": 288,
+      "attrs": { "value": "133" }
+    }
+  ],
+  "connections": [
+    [ "ultrasonic1:VCC", "pico:VBUS", "red", [ "v57.6", "h153.6", "v-355.2", "h105.6", "v28.8" ] ],
+    [ "pico:GND.4", "ultrasonic1:GND", "black", [ "h-28.8", "v153.64", "h-115.2" ] ],
+    [ "pico:GP2", "ultrasonic1:TRIG", "green", [ "h-38.4", "v268.8", "h-124.4" ] ],
+    [ "pico:GP3", "ultrasonic1:ECHO", "green", [ "h-28.8", "v268.8", "h-124.8" ] ],
+    [ "ultrasonic2:VCC", "pico:VBUS", "red", [ "v19.2", "h-134.4", "v-297.6" ] ],
+    [ "pico:GND.5", "ultrasonic2:GND", "black", [ "h29.11", "v163.24", "h9.6" ] ],
+    [ "pico:GP4", "ultrasonic2:TRIG", "green", [ "h-9.6", "v268.8", "h240", "v-38.4" ] ],
+    [
+      "pico:GP5",
+      "ultrasonic2:ECHO",
+      "green",
+      [ "h-57.6", "v-96", "h134.4", "v345.6", "h163.2" ]
+    ],
+    [ "led1:A", "r1:1", "green", [ "v0" ] ],
+    [ "led2:A", "r2:1", "green", [ "v0" ] ],
+    [ "pico:GP10", "r1:2", "green", [ "h-57.6", "v19.2" ] ],
+    [ "led1:C", "pico:GND.1", "green", [ "v0", "h-18.8", "v-38.4", "h163.2", "v-86.4" ] ],
+    [ "led2:C", "pico:GND.8", "green", [ "h-124.4", "v-134.4" ] ],
+    [ "pico:GP11", "r2:2", "green", [ "h-48", "v67.2", "h163.2", "v-96", "h192", "v9.6" ] ]
+  ],
+  "dependencies": {}
+}
